@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>数据和视图同步</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   
+    <script type="text/javascript" src="js/avalon.js"></script>
+</head>
+
+<body>
+  <div ms-controller="wrap">
+    <span>{{a}}</span>
+    <input ms-duplex="a" />
+</div>
+<script type="text/javascript">
+    var abc = avalon.define({
+        $id: "wrap",
+        a: "你好啊"
+    });
+</script>
+</body>
+
+</html>

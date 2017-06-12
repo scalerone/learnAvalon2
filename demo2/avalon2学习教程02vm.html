@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>avalon</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/avalon.js"></script>
+    <style>
+    .ms-controller {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div ms-controller="test">
+        <input ms-duplex="@a" />
+        <p>{{@a}}</p>
+    </div>
+    <script>
+    var vm = avalon.define({
+        $id: 'test',
+        a: 11,
+        b: 22,
+        arr: [{b:1},{b:2},{b:3}]
+    })
+    vm.$watch('a', function(newValue, oldValue) {
+        console.log(newValue)
+        console.log(oldValue)
+    })
+
+    console.log(vm.a=22)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>初玩阿瓦隆</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/avalon.js/2.2.7/avalon.min.js"></script> 
+    <!-- <script type="text/javascript" src="js/avalon.js"></script> -->
+</head>
+
+<body>
+    <div ms-controller="wrap">{{a}}</div>
+    <script type="text/javascript">
+    var abc = avalon.define({ //abc是随便起的一个名字，用作该Model的载体
+        $id: "wrap", //告诉avalon这个Model是作用于哪个ms-controller的
+        a: "你好啊" //定义一个avalon对象属性“a”，其值是“你好啊”
+    });
+
+    // avalon.scan(); //这句话可以不加，因为avalon有自己的DOMReady模块，会自动扫描全文。
+    </script>
+</body>
+
+</html>

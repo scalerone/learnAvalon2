@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>数据-视图同步之选项卡</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script type="text/javascript" src="js/avalon.js"></script>
+</head>
+
+<body>
+    <!-- <h1>  利用avalon数据-视图同步的特性来实现一个选项卡的功能：</h1> -->
+    <script type="text/javascript">
+    var gg = [{
+        "id": "1",
+        "title": "公告文章标题1"
+    }, {
+        "id": "2",
+        "title": "公告文章标题2"
+    }, {
+        "id": "3",
+        "title": "公告文章标题3"
+    }, {
+        "id": "4",
+        "title": "公告文章标题4"
+    }];
+    var bd = [{
+        "id": "1",
+        "title": "媒体报道文章标题1"
+    }, {
+        "id": "2",
+        "title": "媒体报道文章标题2"
+    }, {
+        "id": "3",
+        "title": "媒体报道文章标题3"
+    }, {
+        "id": "4",
+        "title": "媒体报道文章标题4"
+    }];
+    </script>
+    <div ms-controller="list">
+        <span ms-mouseover="changeUl(1)">公告</span>
+        <span ms-mouseover="changeUl(0)">媒体报道</span>
+        <a :attr="{href:'#!/'+ more_name}">{{more_text}}</a>
+        <ul>
+            <li ms-for="el in @infoList">
+                <a :attr="{href:'#!/'+ more_name + '/' + el.id}" >{{el.title}}    <span ms-attr="{title:el.title}">直接引用对象</span></a>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    var vm = avalon.define({
+        $id: "list",
+        more_name: "gg",
+        more_text: "更多公告",
+        gg: gg,
+        bd: bd,
+        infoList: gg,
+        changeUl: function(flag) {
+            if (flag) { //鼠标移过“公告”选项卡头部
+                vm.more_name = "gg";
+                vm.more_text = "更多公告";
+                vm.infoList = vm.gg;
+            } else { //鼠标移过“媒体报道”选项卡头部
+                vm.more_name = "bd";
+                vm.more_text = "更多报道";
+                vm.infoList = vm.bd;
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

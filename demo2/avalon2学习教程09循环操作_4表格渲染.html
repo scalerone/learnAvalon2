@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/avalon.js"></script>
+    </head>
+    <body>
+<script>
+    avalon.define({
+        $id: "selectBy",
+        obj: {a: 'aaa', b: 'bbb', c: 'ccc', d: 'ddd', e: 'eee'},
+        grid: [{a: 1, b: 2, c: 3}, {c: 11, b: 22, a: 33}, {b: 23, a: 44}],
+        defaults: {
+            a:'@@@',
+            b:'$$$',
+            c:'###'
+        }
+    })
+</script>
+<div ms-controller='selectBy'>
+   <ul>
+       <li ms-for='el in @obj | selectBy(["c","a","b"])'>{{el}}</li>
+   </ul>
+   <table border='1' width='200'>
+       <tr ms-for="tr in @grid">
+           <td ms-for="td in tr | selectBy(['a','b','c'],@defaults)">{{td}}</td>
+       </tr>
+   </table>
+</div>
+        
+    </body>
+</html>
